@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn</id>
+    <version>1.8.1.6</version>
+    <authors>Microsoft</authors>
+    <owners>microsoft,visualcpp</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>https://raw.githubusercontent.com/Microsoft/TestAdapterForGoogleTest/dev15/GoogleTestNuGet/license (MIT).txt</licenseUrl>
+    <projectUrl>https://github.com/Microsoft/TestAdapterForGoogleTest</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/Microsoft/TestAdapterForGoogleTest/dev15/GoogleTestAdapter/Resources/Icons/Icon_128.png</iconUrl>
+    <description>Google Test compiled for Windows.</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>native googletest google test gtest c++ cpp</tags>
+  </metadata>
+</package>

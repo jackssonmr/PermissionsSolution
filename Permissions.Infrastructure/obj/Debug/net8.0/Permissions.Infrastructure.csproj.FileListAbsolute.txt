@@ -1,0 +1,14 @@
+/IdeaProjects/PermissionsSolution/Permissions.Infrastructure/bin/Debug/net8.0/Permissions.Infrastructure.deps.json
+/IdeaProjects/PermissionsSolution/Permissions.Infrastructure/bin/Debug/net8.0/Permissions.Infrastructure.runtimeconfig.json
+/IdeaProjects/PermissionsSolution/Permissions.Infrastructure/bin/Debug/net8.0/Permissions.Infrastructure.dll
+/IdeaProjects/PermissionsSolution/Permissions.Infrastructure/bin/Debug/net8.0/Permissions.Infrastructure.pdb
+/IdeaProjects/PermissionsSolution/Permissions.Infrastructure/obj/Debug/net8.0/Permissions.Infrastructure.csproj.AssemblyReference.cache
+/IdeaProjects/PermissionsSolution/Permissions.Infrastructure/obj/Debug/net8.0/Permissions.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/IdeaProjects/PermissionsSolution/Permissions.Infrastructure/obj/Debug/net8.0/Permissions.Infrastructure.AssemblyInfoInputs.cache
+/IdeaProjects/PermissionsSolution/Permissions.Infrastructure/obj/Debug/net8.0/Permissions.Infrastructure.AssemblyInfo.cs
+/IdeaProjects/PermissionsSolution/Permissions.Infrastructure/obj/Debug/net8.0/Permissions.Infrastructure.csproj.CoreCompileInputs.cache
+/IdeaProjects/PermissionsSolution/Permissions.Infrastructure/obj/Debug/net8.0/Permissions.Infrastructure.dll
+/IdeaProjects/PermissionsSolution/Permissions.Infrastructure/obj/Debug/net8.0/refint/Permissions.Infrastructure.dll
+/IdeaProjects/PermissionsSolution/Permissions.Infrastructure/obj/Debug/net8.0/Permissions.Infrastructure.pdb
+/IdeaProjects/PermissionsSolution/Permissions.Infrastructure/obj/Debug/net8.0/Permissions.Infrastructure.genruntimeconfig.cache
+/IdeaProjects/PermissionsSolution/Permissions.Infrastructure/obj/Debug/net8.0/ref/Permissions.Infrastructure.dll

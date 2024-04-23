@@ -1,0 +1,22 @@
+{
+  "name": ".NET Dev Permissions Solution",
+  "dockerComposeFile": ["../docker/devcontainer/docker-compose.yml"],
+  "service": "dev_env",
+  //"workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csharp",
+        "shardulm94.trailing-spaces",
+        "mikestead.dotenv",
+        "fernandoescolar.vscode-solution-explorer",
+        "jmrog.vscode-nuget-package-manager",
+        "patcx.vscode-nuget-gallery",
+        "pkief.material-icon-theme",
+        "formulahendry.dotnet-test-explorer",
+        "ms-dotnettools.vscode-dotnet-runtime"
+      ]
+    }
+  },
+  "remoteUser": "root"
+}

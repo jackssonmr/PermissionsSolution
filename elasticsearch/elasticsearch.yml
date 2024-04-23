@@ -1,0 +1,13 @@
+# Configuración básica de Elasticsearch
+cluster.name: my-cluster
+node.name: node-1
+
+# Configuración de red
+network.host: 127.0.0.1
+
+# Configuración de paths
+path.data: /path/to/data
+path.logs: /path/to/logs
+
+# Configuración de seguridad (para entorno de desarrollo, ajustar según sea necesario)
+xpack.security.enabled: false
