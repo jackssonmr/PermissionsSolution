@@ -1,6 +1,11 @@
+using System.Text;
 using Confluent.Kafka;
+using Microsoft.AspNetCore.Antiforgery;
 using Serilog;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+
 using Permissions.API.Configurations;
 using Permissions.API.Mappings;
 using Permissions.API.Middleware;
@@ -55,7 +60,29 @@ builder.Services.AddScoped<IKafkaProducerService>(provider =>
         return new KafkaProducerService(bootstrapServers, topicName);
     });
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = "your_issuer",
+            ValidAudience = "your_audience",
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your_secret_key"))
+        };
+    });
+
+builder.Services.AddAuthorization();
 builder.Services.AddControllers();
+
+// Configuración del servicio Antiforgery
+builder.Services.AddAntiforgery(options =>
+    {
+        options.HeaderName = "X-CSRF-TOKEN"; // Nombre del encabezado que contendrá el token CSRF
+    });
 
 // Serilog Logging
 builder.Host.UseSerilog((context, configuration) =>
@@ -74,7 +101,38 @@ app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseMiddleware<RequestLoggingMiddleware>();
+// app.UseMiddleware<CsrfMiddleware>();  //Middleware personalizado, si uso este omito la configuracion del Antiforgery 
+// Middleware Antiforgery
+app.Use(next => context =>
+{
+    string path = context.Request.Path.Value;
+
+    // Rutas que no requieren protección CSRF
+    if (
+        string.Equals(path, "/login", StringComparison.OrdinalIgnoreCase) ||
+        string.Equals(path, "/register", StringComparison.OrdinalIgnoreCase)
+       )
+    {
+        return next(context);
+    }
+
+    // Aplica el token CSRF a las solicitudes POST, PUT, DELETE y PATCH
+    if (HttpMethods.IsPost(context.Request.Method) ||
+        HttpMethods.IsPut(context.Request.Method) ||
+        HttpMethods.IsDelete(context.Request.Method) ||
+        HttpMethods.IsPatch(context.Request.Method))
+    {
+        var antiforgery = context.RequestServices.GetService<IAntiforgery>();
+        var tokens = antiforgery.GetAndStoreTokens(context);
+        context.Response.Cookies.Append("X-CSRF-TOKEN", tokens.RequestToken, new CookieOptions() { HttpOnly = false });
+    }
+
+    return next(context);
+});
 app.MapControllers();
 
 app.Run();
